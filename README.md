@@ -4,7 +4,7 @@
 
 Salão, cozinha, estoque, recepção e caixa trabalham sobre os mesmos dados: quando o garçom envia um pedido, a cozinha o vê na hora, o estoque é baixado automaticamente e o caixa já sabe o que cobrar, sem papel, sem redigitação e sem atualizar a tela. O cliente que espera por uma mesa acompanha a própria posição na fila pelo celular.
 
-🔗 **Demonstração online:** <https://gaucho-express.vercel.app> (acesso restrito a usuários cadastrados; as credenciais de teste são entregues junto com o trabalho)
+🔗 **Demonstração online:** <https://gaucho-express-ptl1.vercel.app> (acesso restrito a usuários cadastrados; as credenciais de teste são entregues junto com o trabalho)
 
 ---
 
