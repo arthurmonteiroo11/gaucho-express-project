@@ -1,0 +1,120 @@
+.acompanhar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 1.5rem;
+  background: var(--bg);
+}
+
+.acompanhar-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.acompanhar-marca {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.acompanhar-marca span {
+  color: var(--accent);
+}
+
+.acompanhar-titulo {
+  padding-bottom: 1.25rem;
+  margin-top: 0.15rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.acompanhar-corpo {
+  padding-top: 1.5rem;
+}
+
+.acompanhar-rotulo {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.acompanhar-posicao {
+  font-family: var(--font-mono);
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.acompanhar-destaque {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.acompanhar-texto {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.acompanhar-estimativa {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.25rem 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.acompanhar-estimativa span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.acompanhar-estimativa strong {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.acompanhar-icone {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.acompanhar-icone-ok {
+  color: var(--ok);
+}
+
+.acompanhar-icone-neutro {
+  color: var(--muted);
+}
+
+.acompanhar-aviso {
+  margin-top: 1rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--bad-weak);
+  border-left: 2px solid var(--bad);
+  color: var(--bad);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.acompanhar-rodape {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}

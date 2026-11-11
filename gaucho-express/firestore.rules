@@ -1,0 +1,121 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function autenticado() {
+      return request.auth != null;
+    }
+
+    function temPerfil() {
+      return autenticado()
+        && exists(/databases/$(database)/documents/usuarios/$(request.auth.uid));
+    }
+
+    function perfilAtual() {
+      return get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.perfil;
+    }
+
+    function ehGerente() {
+      return temPerfil() && perfilAtual() == 'gerente';
+    }
+
+    function ehPerfil(nome) {
+      return temPerfil() && perfilAtual() == nome;
+    }
+
+    function gerenteOu(perfis) {
+      return temPerfil() && (perfilAtual() == 'gerente' || perfilAtual() in perfis);
+    }
+
+    function soMuda(campos) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(campos);
+    }
+
+    match /usuarios/{uid} {
+      allow get: if autenticado() && (request.auth.uid == uid || ehGerente());
+      allow list: if ehGerente();
+      allow create, update: if ehGerente()
+        && request.resource.data.perfil in ['gerente', 'garcom', 'cozinha', 'recepcao', 'caixa'];
+      allow delete: if ehGerente();
+    }
+
+    match /pedidos/{id} {
+      allow read: if gerenteOu(['garcom', 'cozinha', 'caixa']);
+
+      allow create: if gerenteOu(['garcom'])
+        && request.resource.data.status == 'Pendente';
+
+      allow update: if soMuda(['status']) && (
+        ehGerente()
+        || (ehPerfil('cozinha') && (
+              (resource.data.status == 'Pendente' && request.resource.data.status == 'Em Preparo')
+              || (resource.data.status == 'Em Preparo' && request.resource.data.status == 'Pronto')))
+        || (ehPerfil('caixa') && request.resource.data.status == 'Pago')
+      );
+
+      allow delete: if false;
+    }
+
+    match /fila/{id} {
+      allow read: if gerenteOu(['recepcao']);
+
+      allow create: if gerenteOu(['recepcao'])
+        && request.resource.data.status == 'Aguardando';
+
+      allow update: if gerenteOu(['recepcao'])
+        && soMuda(['status', 'mesa'])
+        && request.resource.data.status in ['Chamando', 'Alocada'];
+
+      allow delete: if false;
+    }
+
+    match /filaPublica/{id} {
+      allow read: if true;
+
+      allow create: if gerenteOu(['recepcao'])
+        && request.resource.data.keys().hasOnly(['status', 'timestamp'])
+        && request.resource.data.status in ['Aguardando', 'Chamando', 'Alocada'];
+
+      allow update: if gerenteOu(['recepcao'])
+        && soMuda(['status'])
+        && request.resource.data.status in ['Aguardando', 'Chamando', 'Alocada'];
+
+      allow delete: if false;
+    }
+
+    match /estoque/{id} {
+      allow read: if gerenteOu(['garcom']);
+
+      allow update: if soMuda(['quantidadeKg'])
+        && request.resource.data.quantidadeKg is number
+        && request.resource.data.quantidadeKg >= 0
+        && (
+          ehGerente()
+          || (ehPerfil('garcom') && request.resource.data.quantidadeKg <= resource.data.quantidadeKg)
+        );
+
+      allow create, delete: if false;
+    }
+
+    match /mesas/{numero} {
+      allow read: if gerenteOu(['recepcao', 'caixa', 'garcom']);
+
+      allow create: if ehGerente()
+        && request.resource.data.keys().hasOnly(['numero', 'lugares', 'status'])
+        && request.resource.data.numero is int
+        && request.resource.data.lugares is int
+        && request.resource.data.lugares > 0
+        && request.resource.data.status == 'Livre';
+
+      allow update: if gerenteOu(['recepcao', 'caixa'])
+        && soMuda(['status'])
+        && request.resource.data.status in ['Livre', 'Ocupada'];
+
+      allow delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

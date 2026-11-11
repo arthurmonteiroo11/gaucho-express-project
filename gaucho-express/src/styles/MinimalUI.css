@@ -1,0 +1,69 @@
+.mds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 38px;
+  padding: 0.45rem 0.95rem;
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.mds-btn:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.mds-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.mds-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.mds-btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.mds-btn-danger {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+
+.mds-btn-danger:hover:not(:disabled) {
+  background: var(--bad);
+  color: #ffffff;
+}
+
+.mds-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.mds-card-hoverable {
+  cursor: pointer;
+}
+
+.mds-card-hoverable:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+[data-theme="dark"] .mds-btn-primary {
+  color: #191815;
+}
+
+[data-theme="dark"] .mds-btn-danger:hover:not(:disabled) {
+  color: #191815;
+}

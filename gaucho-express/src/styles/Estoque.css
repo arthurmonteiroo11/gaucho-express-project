@@ -1,0 +1,134 @@
+.estoque-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1040px;
+}
+
+.estoque-list {
+  border-top: 1px solid var(--line-strong);
+}
+
+.estoque-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.row-identificacao {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+}
+
+.estoque-row .item-nome {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.estoque-row .item-categoria {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.estoque-alerta {
+  color: var(--bad);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.peso-display {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.estoque-row.baixo .peso-display {
+  color: var(--bad);
+}
+
+.peso-display small {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.row-controles {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.control-group {
+  display: flex;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+}
+
+.ctrl-btn {
+  min-width: 62px;
+  min-height: 38px;
+  padding: 0.4rem 0.6rem;
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.ctrl-btn + .ctrl-btn {
+  border-left: 1px solid var(--line);
+}
+
+.ctrl-btn.min {
+  color: var(--muted);
+}
+
+.ctrl-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.ctrl-btn.sub:hover:not(:disabled) {
+  background: var(--bad-weak);
+  color: var(--bad);
+}
+
+.ctrl-btn.add:hover:not(:disabled) {
+  background: var(--ok-weak);
+  color: var(--ok);
+}
+
+.estoque-vazio {
+  padding: 2.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 860px) {
+  .estoque-row {
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem 1rem;
+  }
+
+  .row-controles {
+    grid-column: 1 / -1;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 420px) {
+  .row-controles {
+    flex-direction: column;
+  }
+
+  .control-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.row-dados {
+  text-align: right;
+}

@@ -1,0 +1,55 @@
+.acesso-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 1.5rem;
+  background: var(--bg);
+}
+
+.acesso-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.acesso-marca {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.acesso-marca span {
+  color: var(--accent);
+}
+
+.acesso-card h1 {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.2rem;
+}
+
+.acesso-texto {
+  margin: 0.5rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.acesso-codigo {
+  display: block;
+  margin-bottom: 1.25rem;
+  padding: 0.6rem 0.7rem;
+  overflow-wrap: anywhere;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  user-select: all;
+}

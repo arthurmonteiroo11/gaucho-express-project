@@ -1,0 +1,138 @@
+.kds-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.kds-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.kds-pulse {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.kds-pulse::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--ok);
+}
+
+.kds-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
+  gap: 1rem;
+  align-content: start;
+}
+
+.kds-board .kds-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border-left: 3px solid var(--line-strong);
+}
+
+.kds-card.pendente {
+  border-left-color: var(--bad);
+}
+
+.kds-card.em-preparo {
+  border-left-color: var(--warn);
+}
+
+.kds-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.kds-card-header h2 {
+  font-size: 1.35rem;
+}
+
+.kds-status-badge {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.kds-card.pendente .kds-status-badge {
+  color: var(--bad);
+}
+
+.kds-card.em-preparo .kds-status-badge {
+  color: var(--warn);
+}
+
+.kds-tempo {
+  margin-top: -0.6rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.kds-card.atencao .kds-tempo {
+  color: var(--warn);
+}
+
+.kds-card.urgente .kds-tempo {
+  color: var(--bad);
+  font-weight: 600;
+}
+
+.kds-itens {
+  flex: 1;
+  border-top: 1px solid var(--line);
+}
+
+.kds-itens li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+.kds-card .kds-btn-acao {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 0.25rem;
+  color: #ffffff;
+}
+
+.kds-card .kds-btn-acao:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.kds-card.pendente .kds-btn-acao {
+  background: var(--bad);
+  border-color: var(--bad);
+}
+
+.kds-card.em-preparo .kds-btn-acao {
+  background: var(--ok);
+  border-color: var(--ok);
+}
+
+[data-theme="dark"] .kds-card .kds-btn-acao {
+  color: #191815;
+}
+
+.kds-vazio {
+  grid-column: 1 / -1;
+  padding: 3rem 1.5rem;
+  border: 1px dashed var(--line-strong);
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}

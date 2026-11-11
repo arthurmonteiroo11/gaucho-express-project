@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: light;
+
+  --bg: #f4f3ef;
+  --surface: #ffffff;
+  --surface-2: #faf9f6;
+  --ink: #1c1b18;
+  --muted: #6b675e;
+  --line: #dcd8cf;
+  --line-strong: #bdb7aa;
+
+  --accent: #b3401c;
+  --accent-hover: #8f3216;
+  --accent-weak: #f4e5de;
+
+  --ok: #4a6b2a;
+  --ok-weak: #e9eedf;
+  --warn: #8a5d0b;
+  --warn-weak: #f6ecd9;
+  --bad: #9c2b1c;
+  --bad-weak: #f6e3df;
+
+  --font-main: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --r: 2px;
+  --shadow: 0 1px 2px rgba(28, 27, 24, 0.07);
+  --shadow-float: 0 8px 24px rgba(28, 27, 24, 0.14);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #191815;
+  --surface: #211f1b;
+  --surface-2: #1d1c19;
+  --ink: #ece9e1;
+  --muted: #a09a8d;
+  --line: #34312a;
+  --line-strong: #4e4a40;
+
+  --accent: #e0724c;
+  --accent-hover: #ef8259;
+  --accent-weak: #33231c;
+
+  --ok: #9ec27a;
+  --ok-weak: #242a1d;
+  --warn: #d6a44a;
+  --warn-weak: #2e2718;
+  --bad: #e08270;
+  --bad-weak: #33211d;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-float: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--accent-weak);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border: 3px solid var(--bg);
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
