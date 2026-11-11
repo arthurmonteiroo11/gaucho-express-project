@@ -131,6 +131,7 @@ O salão tem **12 mesas** (`mesas/1` a `mesas/12`), cada uma com um número de l
 ## 6. Como executar e testar
 
 ```bash
+cd gaucho-express
 npm install
 cp env.example .env       # preencha as variáveis VITE_FIREBASE_* do seu projeto Firebase
 npm run dev               # desenvolvimento
@@ -153,7 +154,7 @@ npm test                  # testes automatizados
    | `11` e `12` | 11, 12 | 6 |
 
    Em todos, `status` começa como `Livre`. Para mudar o salão, edite `src/data/mesas.js` e cadastre as mesas correspondentes.
-4. Publicar as regras de segurança: `firebase deploy --only firestore:rules` (arquivo `firestore.rules`, na raiz do projeto).
+4. Publicar as regras de segurança: `firebase deploy --only firestore:rules` (arquivo `gaucho-express/firestore.rules`).
 5. Publicar a aplicação.
 
 **Roteiro para validar as regras no Simulador do console (antes de publicar):** com um usuário de cada perfil, conferir que (a) `garcom` consegue criar em `pedidos` e é negado ao **aumentar** a quantidade de um item do `estoque`; (b) `cozinha` consegue `Pendente → Em Preparo` e é negada ao tentar `Pago`; (c) `caixa` consegue `Pago` e é negado ao criar pedidos; (d) `recepcao` consegue gravar em `fila` e `filaPublica` e é negada em `pedidos`; (e) usuário **sem** documento em `usuarios` é negado em tudo; (f) leitura sem login só funciona em `filaPublica`; (g) `recepcao` e `caixa` conseguem mudar o `status` de uma mesa, e ninguém consegue criar ou apagar mesa pelo aplicativo.
@@ -169,11 +170,12 @@ npm test                  # testes automatizados
 | `filaPublica/{mesmo id da fila}` | `status`, `timestamp` (somente; sem dados pessoais; leitura pública) |
 | `mesas/{numero}` | `numero`, `lugares`, `status` (`Livre` ou `Ocupada`). O ID do documento é o próprio número da mesa: `1` a `12`. |
 
-**Publicação na Vercel:** o projeto fica na raiz do repositório, então o *Root Directory* pode ficar vazio. Basta cadastrar as variáveis `VITE_FIREBASE_*` nas configurações do projeto. O `vercel.json` garante que rotas como `/caixa` e `/fila/<id>` funcionem ao recarregar a página.
+**Publicação na Vercel:** definir *Root Directory* como `gaucho-express` e cadastrar as variáveis `VITE_FIREBASE_*` nas configurações do projeto. O `vercel.json` garante que rotas como `/caixa` e `/fila/<id>` funcionem ao recarregar a página.
 
 ## 8. Estrutura do projeto
 
 ```
+gaucho-express/
 ├── firestore.rules            regras de segurança do banco (por perfil)
 ├── env.example                modelo das variáveis de ambiente
 └── src/
