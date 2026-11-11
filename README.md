@@ -199,14 +199,13 @@ O trabalho foi conduzido em etapas, com a equipe atuando em conjunto:
 1. **Levantamento do problema.** Em grupo, mapeamos a operação de um restaurante que usa papel e identificamos cinco gargalos: atendimento, cozinha, estoque, recepção e caixa. Cada um virou um módulo.
 2. **Definição de requisitos.** Para cada problema, definimos o que o sistema precisa fazer e como os módulos se conversam: o pedido do garçom alimenta a cozinha, baixa o estoque e chega ao caixa.
 3. **Modelagem dos dados.** Coleções no Firestore (`pedidos`, `fila`, `estoque`, e depois `usuarios`, `filaPublica` e `mesas`), com estados bem definidos para cada fluxo.
-4. **Projeto de interface (UI/UX).** O **Arthur** definiu a identidade visual "Soft Elegance", o design system e a organização das telas, pensando no uso real: tela da cozinha legível de longe, botões grandes no caixa e uso no celular pelo garçom e pelo cliente na fila.
-5. **Implementação.** O **Arthur** desenvolveu o front-end, e a equipe integrou a interface às regras de negócio e ao banco: transações de estoque, estimativa de fila, divisão de conta, perfis de acesso.
+4. **Projeto de interface (UI/UX).** Definimos a identidade visual "Soft Elegance", o design system e a organização das telas, pensando no uso real: tela da cozinha legível de longe, botões grandes no caixa e uso no celular pelo garçom e pelo cliente na fila.
+5. **Implementação.** Desenvolvemos o front-end, e a equipe integrou a interface às regras de negócio e ao banco: transações de estoque, estimativa de fila, divisão de conta, perfis de acesso.
 6. **Testes e refinamento.** Validamos os fluxos entre os módulos, automatizamos os testes da lógica de negócio e corrigimos pontos como estoque negativo, falhas de conexão, acessibilidade e responsividade.
 7. **Publicação e documentação.** Publicação na Vercel, regras de segurança no Firebase e este documento.
 
-## 10. Autor do front-end e UI/UX
-
 **Arthur Silva Monteiro**
+
 Estudante de Ciência da Computação @ UNINOVE
 
 [LinkedIn](https://linkedin.com/in/arthurmonteiroo) • [GitHub](https://github.com/arthurmonteiroo11)
